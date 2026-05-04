@@ -6077,7 +6077,7 @@ input {
 
 @media (max-width: 425px) {
   .solutions-sidebar {
-    min-height: 60px;
+    min-height: 0;
   }
 
   .solutions-mobile-trigger-row {
@@ -6394,7 +6394,6 @@ input {
     padding: 0.68rem 0.72rem;
   }
 }
-
 
 
 
