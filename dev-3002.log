@@ -1,0 +1,15 @@
+
+> getverisight@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3002
+   - Network:      http://192.168.100.6:3002
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 7.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 2.3s (591 modules)
+ GET / 200 in 3450ms
+^C
