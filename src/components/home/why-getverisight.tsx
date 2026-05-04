@@ -10,28 +10,28 @@ const featureItems: Array<{
     title: "Fast Decision Support",
     description:
       "Surface moderation signals quickly so teams can review more content, respond faster, and keep operations moving.",
-    iconSrc: "/speedometer outline icon.PNG",
+    iconSrc: "/speedometer outline icon.png",
     iconAlt: "Speedometer icon",
   },
   {
     title: "Simple To Integrate",
     description:
       "Connect moderation workflows into your product with developer-friendly endpoints for text, image, and video analysis.",
-    iconSrc: "/bolt outline icon.PNG",
+    iconSrc: "/bolt outline icon.png",
     iconAlt: "Bolt icon",
   },
   {
     title: "Built For Safer Outcomes",
     description:
       "Combine model outputs with clear review context to improve consistency, reduce missed violations, and support better decisions.",
-    iconSrc: "/target outline icon.PNG",
+    iconSrc: "/target outline icon.png",
     iconAlt: "Target icon",
   },
   {
     title: "Operationally Secure",
     description:
       "Protect sensitive content with controlled workflows, secure handling, and better visibility into how moderation is performed.",
-    iconSrc: "/lock outline icon.PNG",
+    iconSrc: "/lock outline icon.png",
     iconAlt: "Lock icon",
   },
 ];
