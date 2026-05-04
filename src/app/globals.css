@@ -916,8 +916,8 @@ input {
 
 .solution-card-image {
   object-fit: cover;
-  filter: blur(4px) grayscale(0.45) saturate(0.3) brightness(0.92);
-  transform: scale(1.04);
+  filter: none;
+  transform: scale(1);
   transition:
     filter 0.32s ease,
     transform 0.32s ease;
@@ -926,14 +926,12 @@ input {
 .solution-card-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.35) 100%),
-    radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.72), transparent 24%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.08) 100%);
   transition: opacity 0.32s ease;
 }
 
 .solution-card:hover .solution-card-image {
-  filter: blur(0) grayscale(0) saturate(1.02) brightness(1);
+  filter: saturate(1.02) brightness(1);
   transform: scale(1.015);
 }
 
@@ -6396,7 +6394,6 @@ input {
     padding: 0.68rem 0.72rem;
   }
 }
-
 
 
 
