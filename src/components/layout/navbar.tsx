@@ -5,6 +5,7 @@ import type { MouseEvent } from "react";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { LogoutButton } from "@/components/auth/logout-button";
+import { subscribeAuthStateChanged } from "@/lib/auth-client";
 
 const moderationItems = [
   {
@@ -140,8 +141,15 @@ export function Navbar() {
 
     void loadAuthState();
 
+    const unsubscribeAuthStateChanged = subscribeAuthStateChanged((nextAuthState) => {
+      if (isMounted) {
+        setIsAuthenticated(nextAuthState);
+      }
+    });
+
     return () => {
       isMounted = false;
+      unsubscribeAuthStateChanged();
     };
   }, [pathname]);
 

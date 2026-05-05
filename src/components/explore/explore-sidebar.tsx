@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { LogoutButton } from "@/components/auth/logout-button";
+import { subscribeAuthStateChanged } from "@/lib/auth-client";
 
 const moderationLinks = [
   { label: "Image Moderation", href: "/image-moderation" },
@@ -43,8 +44,16 @@ export function ExploreSidebar() {
 
     void loadAuthState();
 
+    const unsubscribeAuthStateChanged = subscribeAuthStateChanged((nextAuthState) => {
+      if (isMounted) {
+        setIsAuthenticated(nextAuthState);
+        setIsAuthResolved(true);
+      }
+    });
+
     return () => {
       isMounted = false;
+      unsubscribeAuthStateChanged();
     };
   }, [pathname]);
 
