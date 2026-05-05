@@ -2,9 +2,9 @@ import Link from "next/link";
 import { ContactForm } from "@/components/contact/contact-form";
 
 const faqLinks = [
-  { label: "Text Moderation FAQs", href: "/text-moderation" },
-  { label: "Image Moderation FAQs", href: "/image-moderation" },
-  { label: "Video Moderation FAQs", href: "/video-moderation" },
+  { label: "Text Moderation", href: "/text-moderation" },
+  { label: "Image Moderation", href: "/image-moderation" },
+  { label: "Video Moderation", href: "/video-moderation" },
 ] as const;
 
 export default function ContactPage() {
