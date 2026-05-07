@@ -1,4 +1,5 @@
 import { env } from "@/lib/env";
+import { analyzeAiWriting } from "@/lib/moderation/text/ai-writing";
 import {
   defaultTextModerationResult,
   type TextLanguage,
@@ -127,7 +128,11 @@ function getMatches(
     .filter((match): match is TextModerationMatch => Boolean(match && match.match));
 }
 
-function buildResult(payload: Record<string, unknown>, language: TextLanguage): TextModerationUiResult {
+function buildResult(
+  payload: Record<string, unknown>,
+  language: TextLanguage,
+  text: string,
+): TextModerationUiResult {
   const moderationClasses =
     payload.moderation_classes && typeof payload.moderation_classes === "object"
       ? (payload.moderation_classes as Record<string, unknown>)
@@ -192,6 +197,7 @@ function buildResult(payload: Record<string, unknown>, language: TextLanguage): 
     overallScore,
     verdict,
     summary,
+    aiWritingCheck: analyzeAiWriting(text),
     mlScores,
     ruleScores,
     filterResults,
@@ -236,7 +242,9 @@ export async function moderateText(input: TextModerationRequest): Promise<TextMo
 
   return {
     provider: "getverisight",
-    result: input.text.trim() ? buildResult(payload, input.language) : defaultTextModerationResult,
+    result: input.text.trim()
+      ? buildResult(payload, input.language, input.text)
+      : defaultTextModerationResult,
     raw: payload,
   };
 }

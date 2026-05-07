@@ -26,11 +26,20 @@ export type TextFilterResult = {
   topType: string;
 };
 
+export type AiWritingCheck = {
+  aiPercent: number;
+  humanPercent: number;
+  confidence: "Low" | "Medium" | "High";
+  summary: string;
+  signals: string[];
+};
+
 export type TextModerationUiResult = {
   language: string;
   overallScore: number;
   verdict: "Safe" | "Review" | "Block";
   summary: string;
+  aiWritingCheck: AiWritingCheck;
   mlScores: TextModerationScore[];
   ruleScores: TextModerationScore[];
   filterResults: TextFilterResult[];
@@ -103,6 +112,13 @@ export const defaultTextModerationResult: TextModerationUiResult = {
   overallScore: 0,
   verdict: "Safe",
   summary: "No moderation signals yet. Enter text to analyze it.",
+  aiWritingCheck: {
+    aiPercent: 0,
+    humanPercent: 0,
+    confidence: "Low",
+    summary: "Enter text to review writing-pattern signals.",
+    signals: [],
+  },
   mlScores: [
     { label: "Sexual", value: 0, tone: "safe" },
     { label: "Discriminatory", value: 0, tone: "safe" },

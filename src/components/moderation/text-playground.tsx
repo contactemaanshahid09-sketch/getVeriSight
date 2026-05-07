@@ -128,6 +128,46 @@ export function TextPlayground() {
             </div>
 
             <div className="text-results-grid">
+              <section className="text-result-card ai-check-card">
+                <div className="text-result-head">
+                  <h3>AI checker</h3>
+                  <span>{result.aiWritingCheck.confidence} confidence</span>
+                </div>
+                <div className="text-score-list">
+                  <div className="text-score-row">
+                    <span>AI-written</span>
+                    <div className="text-score-track">
+                      <div
+                        className="text-score-fill warning"
+                        style={{ width: `${result.aiWritingCheck.aiPercent}%` }}
+                      />
+                    </div>
+                    <strong>{result.aiWritingCheck.aiPercent}%</strong>
+                  </div>
+                  <div className="text-score-row">
+                    <span>Human-written</span>
+                    <div className="text-score-track">
+                      <div
+                        className="text-score-fill safe"
+                        style={{ width: `${result.aiWritingCheck.humanPercent}%` }}
+                      />
+                    </div>
+                    <strong>{result.aiWritingCheck.humanPercent}%</strong>
+                  </div>
+                </div>
+                <p className="ai-check-summary">{result.aiWritingCheck.summary}</p>
+                {result.aiWritingCheck.signals.length > 0 ? (
+                  <div className="ai-signal-list">
+                    {result.aiWritingCheck.signals.map((signal) => (
+                      <span key={signal}>{signal}</span>
+                    ))}
+                  </div>
+                ) : null}
+                <p className="ai-check-note">
+                  Use this score with the moderation signals for a more complete text review.
+                </p>
+              </section>
+
               <section className="text-result-card">
                 <div className="text-result-head">
                   <h3>ML classes</h3>
